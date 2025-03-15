@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/themes/theme.dart';
 import 'package:sommelier/ui/splash/widgets/splash_screen.dart';
 
@@ -11,6 +13,15 @@ class SommelierApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: AppTheme.lightTheme, home: SplashScreen());
+    return MaterialApp(
+      locale: Locale("pt", "BR"),
+      supportedLocales: [Locale("pt")],
+      localizationsDelegates: [
+        ...GlobalMaterialLocalizations.delegates,
+        AppLocalizationDelegate(),
+      ],
+      theme: AppTheme.lightTheme,
+      home: SplashScreen(),
+    );
   }
 }
