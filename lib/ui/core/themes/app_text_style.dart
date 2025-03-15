@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+
+class AppTextThemes {
+  static final TextTheme lightTextTheme = TextTheme(
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 57,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    displayMedium: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 45,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    displaySmall: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 36,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    headlineLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 32,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    headlineMedium: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 28,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    headlineSmall: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 24,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    titleLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 22,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0,
+      color: Colors.black,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
+      color: Colors.black,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
+      color: Colors.black,
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0.5,
+      color: Colors.black,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0.25,
+      color: Colors.black,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0.4,
+      color: Colors.black,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.1,
+      color: Colors.black,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.5,
+      color: Colors.black,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 11,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.5,
+      color: Colors.black,
+    ),
+  );
+}

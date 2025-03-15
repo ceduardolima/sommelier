@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:logging/logging.dart';
+import 'package:sommelier/routing/router.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/themes/theme.dart';
-import 'package:sommelier/ui/splash/widgets/splash_screen.dart';
 
 void main() {
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    final time = record.time;
+    debugPrint(
+      '[${record.level.name}][${time.hour}:${time.minute}:${time.second}:${time.millisecond}][${record.loggerName}]: ${record.message}',
+    );
+  });
+
+  Logger("test").info("start");
+
   runApp(const SommelierApp());
 }
 
@@ -13,7 +24,7 @@ class SommelierApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       locale: Locale("pt", "BR"),
       supportedLocales: [Locale("pt")],
       localizationsDelegates: [
@@ -21,7 +32,7 @@ class SommelierApp extends StatelessWidget {
         AppLocalizationDelegate(),
       ],
       theme: AppTheme.lightTheme,
-      home: SplashScreen(),
+      routerConfig: router(),
     );
   }
 }
