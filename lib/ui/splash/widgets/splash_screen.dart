@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sommelier/routing/routes.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
-
-const _splashImagePath = "assets/images/splash.png";
+import 'package:sommelier/ui/core/static/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   _showProgressIndicator = true;
                   Future.delayed(Duration(seconds: 1), () {
                     if (context.mounted) {
-                      context.go(Routes.login);
+                      context.go(Routes.onBoarding);
                     }
                   });
                 });
@@ -100,7 +99,7 @@ class _AnimatedSplashImageState extends State<_AnimatedSplashImage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  _splashImagePath,
+                  Assets.splashImagePath,
                   cacheHeight: imageHeigh,
                   cacheWidth: imageWidth,
                 ),

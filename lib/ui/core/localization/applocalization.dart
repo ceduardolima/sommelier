@@ -6,7 +6,13 @@ class AppLocalization {
     return Localizations.of(context, AppLocalization);
   }
 
-  static const _strings = <String, String>{'appSplashTitle': 'Somm\nlier'};
+  static const _strings = <String, String>{
+    'appSplashTitle': 'Somm\nlier',
+    'onBoardingTitle': "Deguste\nExperimente\nRegistre",
+    'onBoardingBody':
+        "Explore novos rótulos, registre suas experiências e construa seu diário de degustação.",
+    'startLabel': "Começar",
+  };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';
 }

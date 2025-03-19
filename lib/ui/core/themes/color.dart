@@ -11,14 +11,16 @@ abstract final class AppColors {
   static const purple1 = Color(0xFFCF94CB);
   static const green1 = Color(0xFFCCCB72);
   static const black1 = Color(0xFF49454F);
+  static const black2 = Color(0xFF000000);
 
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.orange1,
     onPrimary: AppColors.white1,
     surface: AppColors.white2,
+    primaryContainer: AppColors.orange3,
     onSurface: AppColors.black1,
-    onSurfaceVariant: AppColors.black1,
+    onSurfaceVariant: AppColors.black2,
     onPrimaryContainer: Color(0xFF3A0A02),
     secondary: AppColors.orange2,
     onSecondary: AppColors.white1,
