@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sommelier/routing/routes.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
 
 const _splashImagePath = "assets/images/splash.png";
@@ -25,6 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
               onEnd: () {
                 setState(() {
                   _showProgressIndicator = true;
+                  Future.delayed(Duration(seconds: 1), () {
+                    if (context.mounted) {
+                      context.go(Routes.login);
+                    }
+                  });
                 });
               },
             ),

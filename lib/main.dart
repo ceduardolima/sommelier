@@ -14,8 +14,6 @@ void main() {
     );
   });
 
-  Logger("test").info("start");
-
   runApp(const SommelierApp());
 }
 
