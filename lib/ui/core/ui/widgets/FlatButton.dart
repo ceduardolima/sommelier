@@ -22,7 +22,7 @@ class FlatButton extends StatelessWidget {
             backgroundColor ?? Theme.of(context).colorScheme.onPrimary,
         elevation: 0,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(

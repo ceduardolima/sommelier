@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
+import 'package:sommelier/routing/routes.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
@@ -48,7 +51,10 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
 
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Logger("onBoarding").info("click");
+                    context.go(Routes.login);
+                  },
                   text: AppLocalization.of(context).get("startLabel"),
                 ),
               ],

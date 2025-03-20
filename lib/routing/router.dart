@@ -1,6 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sommelier/routing/routes.dart';
+import 'package:sommelier/routing/transitions.dart';
+import 'package:sommelier/ui/login/widgets/login_screen.dart';
 import 'package:sommelier/ui/on_boarding/widgets/on_boarding_screen.dart';
 import 'package:sommelier/ui/splash/widgets/splash_screen.dart';
 
@@ -17,16 +18,22 @@ GoRouter router() => GoRouter(
     GoRoute(
       path: Routes.onBoarding,
       pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          key: state.pageKey,
-          child: OnBoardingScreen(),
-          transitionDuration: const Duration(milliseconds: 200),
-          transitionsBuilder: (context, animation, secondatyAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.linear).animate(animation),
-              child: child,
-            );
-          },
+        return TransitionsFactory.getFadeTransition(
+          context: context,
+          state: state,
+          child: const OnBoardingScreen(),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: Routes.login,
+      pageBuilder: (context, state) {
+        return TransitionsFactory.getSlideTransition(
+          context: context,
+          state: state,
+          child: const LoginScreen(),
+          leftToRight: false,
         );
       },
     ),
