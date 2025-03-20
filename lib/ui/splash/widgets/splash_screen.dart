@@ -17,27 +17,32 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 50),
+        child: Stack(
           children: [
-            _AnimatedSplashImage(
-              onEnd: () {
-                setState(() {
-                  _showProgressIndicator = true;
-                  Future.delayed(Duration(seconds: 1), () {
-                    if (context.mounted) {
-                      context.go(Routes.onBoarding);
-                    }
+            Align(
+              alignment: Alignment.center,
+              child: _AnimatedSplashImage(
+                onEnd: () {
+                  setState(() {
+                    _showProgressIndicator = true;
+                    Future.delayed(Duration(seconds: 1), () {
+                      if (context.mounted) {
+                        context.go(Routes.onBoarding);
+                      }
+                    });
                   });
-                });
-              },
+                },
+              ),
             ),
-            Visibility(
-              visible: _showProgressIndicator,
-              replacement: SizedBox(height: 32),
-              child: CircularProgressIndicator(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Visibility(
+                visible: _showProgressIndicator,
+                replacement: SizedBox(height: 32),
+                child: CircularProgressIndicator(),
+              ),
             ),
           ],
         ),
@@ -78,7 +83,7 @@ class _AnimatedSplashImageState extends State<_AnimatedSplashImage> {
   Widget build(BuildContext context) {
     const imageHeigh = 150;
     const imageWidth = 226;
-    const double animationHeight = imageHeigh + 80.0;
+    const double animationHeight = imageHeigh + 100.0;
 
     final width = MediaQuery.sizeOf(context).width;
 
@@ -89,7 +94,8 @@ class _AnimatedSplashImageState extends State<_AnimatedSplashImage> {
         children: [
           AnimatedPositioned(
             width: imageWidth.toDouble(),
-            top: _startAnimation ? 0 : animationHeight,
+            height: animationHeight,
+            top: _startAnimation ? 20 : animationHeight,
             left: (width - imageWidth) / 2,
             curve: Curves.easeOutBack,
             duration: Duration(seconds: 1),
