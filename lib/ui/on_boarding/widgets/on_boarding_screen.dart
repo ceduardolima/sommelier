@@ -5,6 +5,7 @@ import 'package:sommelier/routing/routes.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
+import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -24,13 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
             cacheHeight: imageHeight,
             cacheWidth: imageWidth,
           ),
-          Container(
-            width: screenSize.width,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+          BottomSheetContainer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               spacing: 20,

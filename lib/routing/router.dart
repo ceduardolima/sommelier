@@ -6,7 +6,7 @@ import 'package:sommelier/ui/on_boarding/widgets/on_boarding_screen.dart';
 import 'package:sommelier/ui/splash/widgets/splash_screen.dart';
 
 GoRouter router() => GoRouter(
-  initialLocation: Routes.splash,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.splash,
