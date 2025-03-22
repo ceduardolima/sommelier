@@ -12,6 +12,8 @@ class AppLocalization {
     'onBoardingBody':
         "Explore novos rótulos, registre suas experiências e construa seu diário de degustação.",
     'startLabel': "Começar",
+    'login': "Login",
+    'register': "Cadastro",
   };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
+import 'package:sommelier/ui/login/widgets/login_switcher.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -22,7 +23,12 @@ class LoginScreen extends StatelessWidget {
                 cacheHeight: 186,
               ),
             ),
-            BottomSheetContainer(child: SizedBox(height: 440)),
+            BottomSheetContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [LoginSwitcher()],
+              ),
+            ),
           ],
         ),
       ),
