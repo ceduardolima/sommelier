@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BottomSheetContainer extends StatelessWidget {
-  const BottomSheetContainer({super.key, required this.child});
+  const BottomSheetContainer({
+    super.key,
+    required this.child,
+    required this.padding,
+  });
   final Widget child;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class BottomSheetContainer extends StatelessWidget {
         color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+      padding: padding,
       child: child,
     );
   }

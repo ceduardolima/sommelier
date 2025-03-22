@@ -26,6 +26,7 @@ class OnBoardingScreen extends StatelessWidget {
             cacheWidth: imageWidth,
           ),
           BottomSheetContainer(
+            padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               spacing: 20,
