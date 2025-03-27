@@ -76,7 +76,7 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          spacing: 30,
+          spacing: Dimens.paddingVertical,
           children: [
             LoginSwitcher(onChange: _changePage),
             SizedBox(
@@ -86,8 +86,8 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   Column(
-                    spacing: Dimens.middle.toDouble(),
                     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    spacing: Dimens.paddingVertical,
                     children: [
                       EmailInput(name: "username"),
                       PasswordInput(name: "password"),
