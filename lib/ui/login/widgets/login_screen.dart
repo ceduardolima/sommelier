@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/themes/dimens.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 import 'package:sommelier/ui/login/widgets/email_input.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
 import 'package:sommelier/ui/login/widgets/password_input.dart';
+import 'package:sommelier/ui/login/widgets/remember_password_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -80,9 +82,11 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                 children: [
                   Column(
                     spacing: Dimens.middle.toDouble(),
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       EmailInput(name: "username"),
                       PasswordInput(name: "password"),
+                      RememberPasswordButton(name: "remember"),
                     ],
                   ),
                   Container(
