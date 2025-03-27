@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
+import 'package:sommelier/ui/core/themes/dimens.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
+import 'package:sommelier/ui/login/widgets/email_input.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
 import 'package:sommelier/ui/login/widgets/password_input.dart';
 
@@ -17,7 +19,7 @@ class LoginScreen extends StatelessWidget {
             minHeight: MediaQuery.sizeOf(context).height,
           ),
           child: Padding(
-            padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: Dimens.paddingVertical),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -62,7 +64,7 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return BottomSheetContainer(
-      padding: EdgeInsets.all(30),
+      padding: Dimens.of(context).edgeInsetsScreenSymmetric,
       child: FormBuilder(
         key: _formKey,
         child: Column(
@@ -77,7 +79,7 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   Column(
-                    spacing: 16,
+                    spacing: Dimens.middle.toDouble(),
                     children: [
                       EmailInput(name: "username"),
                       PasswordInput(name: "password"),
