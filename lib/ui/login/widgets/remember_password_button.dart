@@ -4,8 +4,13 @@ import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/themes/dimens.dart';
 
 class RememberPasswordButton extends StatefulWidget {
-  const RememberPasswordButton({super.key, required this.name});
+  const RememberPasswordButton({
+    super.key,
+    required this.name,
+    this.initialValue = false,
+  });
   final String name;
+  final bool initialValue;
 
   @override
   State<RememberPasswordButton> createState() => _RememberPasswordButtonState();
@@ -18,6 +23,7 @@ class _RememberPasswordButtonState extends State<RememberPasswordButton> {
   Widget build(BuildContext context) {
     return FormBuilderField(
       name: widget.name,
+      initialValue: widget.initialValue,
       builder: (state) {
         return InkWell(
           onTap: () {

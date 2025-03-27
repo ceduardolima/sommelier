@@ -9,7 +9,6 @@ abstract final class AppTheme {
     textTheme: _textTheme,
     colorScheme: AppColors.lightColorScheme,
     inputDecorationTheme: InputDecorationTheme(
-      constraints: BoxConstraints.expand(height: 56),
       border: UnderlineInputBorder(
         borderSide: BorderSide(color: Color(0xFFE5E1E1)),
       ),

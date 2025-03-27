@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:logging/logging.dart';
 import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/themes/dimens.dart';
+import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 import 'package:sommelier/ui/login/widgets/email_input.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
@@ -56,6 +58,9 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
   final _duration = Duration(milliseconds: 200);
   final _curve = Curves.easeInOutCubic;
   final _formKey = GlobalKey<FormBuilderState>();
+  final _log = Logger("LoginBottomSheet");
+
+  FormBuilderState? get _formState => _formKey.currentState;
 
   @override
   void initState() {
@@ -82,11 +87,18 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                 children: [
                   Column(
                     spacing: Dimens.middle.toDouble(),
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       EmailInput(name: "username"),
                       PasswordInput(name: "password"),
                       RememberPasswordButton(name: "remember"),
+                      FlatButton(
+                        onPressed: () {
+                          _formState?.saveAndValidate();
+                          _log.info(_formState?.value);
+                        },
+                        text: AppLocalization.of(context).get("signIn"),
+                      ),
                     ],
                   ),
                   Container(

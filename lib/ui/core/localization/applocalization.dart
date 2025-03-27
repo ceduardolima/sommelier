@@ -19,6 +19,7 @@ class AppLocalization {
     'fieldRequired': 'Campo obrigatório',
     'invalidEmail': 'E-mail inválido',
     'rememberPassword': "Lembrar senha",
+    'signIn': 'Entrar',
   };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';
