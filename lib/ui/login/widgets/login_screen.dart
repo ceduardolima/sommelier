@@ -1,20 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
+import 'package:sommelier/ui/login/widgets/password_input.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.sizeOf(context).height,
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    Assets.drinkWineImagePath,
+                    cacheWidth: 226,
+                    cacheHeight: 186,
+                  ),
+                ),
+                _LoginBottomSheet(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginBottomSheet extends StatefulWidget {
+  const _LoginBottomSheet({super.key});
+
+  @override
+  State<_LoginBottomSheet> createState() => __LoginBottomSheetState();
+}
+
+class __LoginBottomSheetState extends State<_LoginBottomSheet> {
   late PageController _pageController;
   final _duration = Duration(milliseconds: 200);
   final _curve = Curves.easeInOutCubic;
+  final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   void initState() {
@@ -24,52 +61,31 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 20.0),
+    return BottomSheetContainer(
+      padding: EdgeInsets.all(30),
+      child: FormBuilder(
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.end,
+          spacing: 30,
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: Image.asset(
-                Assets.drinkWineImagePath,
-                cacheWidth: 226,
-                cacheHeight: 186,
-              ),
-            ),
-            BottomSheetContainer(
-              padding: EdgeInsets.all(30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                spacing: 30,
+            LoginSwitcher(onChange: _changePage),
+            SizedBox(
+              height: 300,
+              child: PageView(
+                controller: _pageController,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  LoginSwitcher(
-                    onChange: (bool isLogin) {
-                      if (isLogin) {
-                        _previousPage();
-                      } else {
-                        _nextPage();
-                      }
-                    },
+                  Column(
+                    spacing: 16,
+                    children: [
+                      EmailInput(name: "username"),
+                      PasswordInput(name: "password"),
+                    ],
                   ),
-                  SizedBox(
-                    height: 300,
-                    child: PageView(
-                      controller: _pageController,
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        Container(
-                          constraints: BoxConstraints.expand(),
-                          color: Colors.red,
-                        ),
-                        Container(
-                          constraints: BoxConstraints.expand(),
-                          color: Colors.blue,
-                        ),
-                      ],
-                    ),
+                  Container(
+                    constraints: BoxConstraints.expand(),
+                    color: Colors.blue,
                   ),
                 ],
               ),
@@ -78,6 +94,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _changePage(bool isLogin) {
+    if (isLogin) {
+      _previousPage();
+    } else {
+      _nextPage();
+    }
   }
 
   void _nextPage() {

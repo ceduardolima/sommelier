@@ -8,5 +8,21 @@ abstract final class AppTheme {
     brightness: Brightness.light,
     textTheme: _textTheme,
     colorScheme: AppColors.lightColorScheme,
+    inputDecorationTheme: InputDecorationTheme(
+      constraints: BoxConstraints.expand(height: 56),
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFE5E1E1)),
+      ),
+
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFE5E1E1)),
+      ),
+
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFE5E1E1)),
+      ),
+
+      labelStyle: _textTheme.bodyMedium?.copyWith(color: Color(0xFFEDE0DD)),
+    ),
   );
 }

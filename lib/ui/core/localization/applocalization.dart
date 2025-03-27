@@ -14,6 +14,10 @@ class AppLocalization {
     'startLabel': "Começar",
     'login': "Login",
     'register': "Cadastro",
+    'email': 'E-mail',
+    'password': "Senha",
+    'fieldRequired': 'Campo obrigatório',
+    'invalidEmail': 'E-mail inválido',
   };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';
