@@ -20,6 +20,9 @@ class AppLocalization {
     'invalidEmail': 'E-mail inválido',
     'rememberPassword': "Lembrar senha",
     'signIn': 'Entrar',
+    'forgetPassword': "Esqueceu a senha?",
+    'dontHaveAccount': "Não tem uma conta?",
+    'signup': "Cadastre-se",
   };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';

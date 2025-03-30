@@ -7,8 +7,10 @@ import 'package:sommelier/ui/core/themes/dimens.dart';
 import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 import 'package:sommelier/ui/login/widgets/email_input.dart';
+import 'package:sommelier/ui/login/widgets/forgot_password_button.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
 import 'package:sommelier/ui/login/widgets/password_input.dart';
+import 'package:sommelier/ui/login/widgets/register_button.dart';
 import 'package:sommelier/ui/login/widgets/remember_password_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -80,12 +82,13 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
           children: [
             LoginSwitcher(onChange: _changePage),
             SizedBox(
-              height: 300,
+              height: 350,
               child: PageView(
                 controller: _pageController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     spacing: Dimens.paddingVertical,
                     children: [
@@ -99,6 +102,8 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                         },
                         text: AppLocalization.of(context).get("signIn"),
                       ),
+                      ForgotPasswordButton(),
+                      RegisterButton(),
                     ],
                   ),
                   Container(
