@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:logging/logging.dart';
-import 'package:sommelier/ui/core/localization/applocalization.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/themes/dimens.dart';
-import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
-import 'package:sommelier/ui/login/widgets/email_input.dart';
-import 'package:sommelier/ui/login/widgets/forgot_password_button.dart';
+import 'package:sommelier/ui/login/widgets/login_form.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
-import 'package:sommelier/ui/login/widgets/password_input.dart';
-import 'package:sommelier/ui/login/widgets/register_button.dart';
-import 'package:sommelier/ui/login/widgets/remember_password_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -59,10 +52,7 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
   late PageController _pageController;
   final _duration = Duration(milliseconds: 200);
   final _curve = Curves.easeInOutCubic;
-  final _formKey = GlobalKey<FormBuilderState>();
   final _log = Logger("LoginBottomSheet");
-
-  FormBuilderState? get _formState => _formKey.currentState;
 
   @override
   void initState() {
@@ -74,47 +64,30 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
   Widget build(BuildContext context) {
     return BottomSheetContainer(
       padding: Dimens.of(context).edgeInsetsScreenSymmetric,
-      child: FormBuilder(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          spacing: Dimens.paddingVertical,
-          children: [
-            LoginSwitcher(onChange: _changePage),
-            SizedBox(
-              height: 350,
-              child: PageView(
-                controller: _pageController,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    spacing: Dimens.paddingVertical,
-                    children: [
-                      EmailInput(name: "username"),
-                      PasswordInput(name: "password"),
-                      RememberPasswordButton(name: "remember"),
-                      FlatButton(
-                        onPressed: () {
-                          _formState?.saveAndValidate();
-                          _log.info(_formState?.value);
-                        },
-                        text: AppLocalization.of(context).get("signIn"),
-                      ),
-                      ForgotPasswordButton(),
-                      RegisterButton(),
-                    ],
-                  ),
-                  Container(
-                    constraints: BoxConstraints.expand(),
-                    color: Colors.blue,
-                  ),
-                ],
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: Dimens.paddingVertical,
+        children: [
+          LoginSwitcher(onChange: _changePage),
+          SizedBox(
+            height: 350,
+            child: PageView(
+              controller: _pageController,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                LoginForm(
+                  onSubmit: (value) {
+                    _log.info(value);
+                  },
+                ),
+                Container(
+                  constraints: BoxConstraints.expand(),
+                  color: Colors.blue,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
