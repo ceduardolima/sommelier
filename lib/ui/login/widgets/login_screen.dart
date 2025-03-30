@@ -1,10 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:sommelier/ui/core/static/assets.dart';
 import 'package:sommelier/ui/core/themes/dimens.dart';
+import 'package:sommelier/ui/core/ui/widgets/FlatButton.dart';
 import 'package:sommelier/ui/core/ui/widgets/bottom_sheet_container.dart';
 import 'package:sommelier/ui/login/widgets/login_form.dart';
 import 'package:sommelier/ui/login/widgets/login_switcher.dart';
+import 'package:sommelier/ui/login/widgets/profile_image_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -80,9 +83,11 @@ class __LoginBottomSheetState extends State<_LoginBottomSheet> {
                     _log.info(value);
                   },
                 ),
-                Container(
-                  constraints: BoxConstraints.expand(),
-                  color: Colors.blue,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  spacing: Dimens.paddingVertical,
+                  children: [ProfileImageButton(onPressed: () {})],
                 ),
               ],
             ),

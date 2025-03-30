@@ -23,6 +23,7 @@ class AppLocalization {
     'forgetPassword': "Esqueceu a senha?",
     'dontHaveAccount': "Não tem uma conta?",
     'signup': "Cadastre-se",
+    'chooseProfileImage': "Escolher foto de perfil",
   };
 
   String get(String label) => _strings[label] ?? '[${label.toUpperCase()}]';
